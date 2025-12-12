@@ -21,7 +21,7 @@ const io=new Server(server,{
    cors:{
     origin:"http://localhost:5173",
     credentials:true,
-    methods:['POST','GET']
+    methods:['POST','GET','UPDATE','DELETE']
 }
 })
 
@@ -41,6 +41,10 @@ app.use("/api/user",userRouter)
 app.use("/api/shop",shopRouter)
 app.use("/api/item",itemRouter)
 app.use("/api/order",orderRouter)
+
+app.get("/", (req, res) => {
+    res.send("API is running...");
+});
 
 socketHandler(io)
 server.listen(port,()=>{

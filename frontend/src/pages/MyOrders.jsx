@@ -39,24 +39,26 @@ return ()=>{
 
         <div className='flex items-center gap-[20px] mb-6 '>
           <div className=' z-[10] ' onClick={() => navigate("/")}>
-            <IoIosArrowRoundBack size={35} className='text-[#ff4d2d]' />
+            <IoIosArrowRoundBack size={35} className='text-[#ff4d2d] cursor-pointer' />
           </div>
           <h1 className='text-2xl font-bold  text-start'>My Orders</h1>
         </div>
         <div className='space-y-6'>
-          {myOrders?.map((order,index)=>(
-            userData.role=="user" ?
-            (
-              <UserOrderCard data={order} key={index}/>
-            )
-            :
-            userData.role=="owner"? (
-              <OwnerOrderCard data={order} key={index}/>
-            )
-            :
-            null
-          ))}
+  {myOrders?.length === 0 ? (
+    <p className="text-center text-gray-500 text-lg font-medium">
+      You haven't ordered anything yet
+    </p>
+  ) : (
+    myOrders.map((order, index) =>
+      userData.role === "user" ? (
+        <UserOrderCard data={order} key={index} />
+      ) : userData.role === "owner" ? (
+        <OwnerOrderCard data={order} key={index} />
+      ) : null
+    )
+  )}
         </div>
+
       </div>
     </div>
   )

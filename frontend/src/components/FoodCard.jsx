@@ -67,11 +67,11 @@ const newQty=quantity-1
 
 <div className='flex items-center border rounded-full overflow-hidden shadow-sm'>
 <button className='px-2 py-1 hover:bg-gray-100 transition' onClick={handleDecrease}>
-<FaMinus size={12}/>
+<FaMinus size={12} className='cursor-pointer'/>
 </button>
 <span>{quantity}</span>
 <button className='px-2 py-1 hover:bg-gray-100 transition' onClick={handleIncrease}>
-<FaPlus size={12}/>
+<FaPlus size={12} className='cursor-pointer'/>
 </button>
 <button className={`${cartItems.some(i=>i.id==data._id)?"bg-gray-800":"bg-[#ff4d2d]"} text-white px-3 py-2 transition-colors`}  onClick={()=>{
     quantity>0?dispatch(addToCart({
@@ -83,7 +83,7 @@ const newQty=quantity-1
           quantity,
           foodType:data.foodType
 })):null}}>
-<FaShoppingCart size={16}/>
+<FaShoppingCart size={16} className='cursor-pointer'/>
 </button>
 </div>
 </div>
